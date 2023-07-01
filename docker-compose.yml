@@ -1,0 +1,25 @@
+version: '3.7'
+
+networks:
+  gitlab-network:
+
+
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    container_name: gitlab-runner
+    depends_on:
+      - deployment-server
+    volumes:
+      - './gitlab-runner:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - gitlab-network
+
+  deployment-server:
+    build: .
+    container_name: hatch.deployment.com
+    ports:
+      - '22:23'
+    networks:
+      - gitlab-network
