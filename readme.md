@@ -149,7 +149,7 @@ c867781a3318   host                           host      local
 
 Does your config.toml have a `network_mode` appended to it? If not, then add one in the runners.docker section. So from:
 
-'''toml
+''' toml
 [[runners]]
   name = "hatch-runner"
   url = "<https://gitlab.com>"
@@ -173,7 +173,7 @@ Does your config.toml have a `network_mode` appended to it? If not, then add one
 
 to
 
-'''toml
+''' toml
 [[runners]]
   name = "hatch-runner"
   url = "<https://gitlab.com>"
