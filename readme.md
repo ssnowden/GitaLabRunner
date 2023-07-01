@@ -149,7 +149,7 @@ c867781a3318   host                           host      local
 
 Does your config.toml have a `network_mode` appended to it? If not, then add one in the runners.docker section. So from:
 
-''' toml
+``` toml
 [[runners]]
   name = "hatch-runner"
   url = "<https://gitlab.com>"
@@ -169,11 +169,11 @@ Does your config.toml have a `network_mode` appended to it? If not, then add one
     disable_cache = false
     volumes = ["/cache"]
     shm_size = 0
-'''
+```
 
 to
 
-''' toml
+``` toml
 [[runners]]
   name = "hatch-runner"
   url = "<https://gitlab.com>"
@@ -194,7 +194,7 @@ to
     volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
     network_mode = "gitalabrunner_gitlab-network"
     shm_size = 0
-'''
+```
 
 When the containers were spun up from the docker-compose.yml file the network had the project directory appended to it. Is the network mode in the gitlab-runner config.toml the same as the name in the list? If not make sure that it is. Then Docker down and Docker up again.
 
