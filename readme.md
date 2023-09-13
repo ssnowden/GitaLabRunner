@@ -203,7 +203,7 @@ Once you have got used to running build and test CI/CD routines you are gong to 
 ### Adding a ssh key for automatic access to the deployment server
 
 1. On the gitlab-runner instance, generate a ssh key pair with `ssh-keygen -t rsa -b 4096` and fill in requested data. No need for a passphrase.
-2. Copy your id with `ssh-copy-id -p 22 deploymentagent@hatch.deployment.com`. The output will be something like that shown below. Note that it will ask for the password for the deploymentagent user.
+2. Copy your id with `ssh-copy-id -i ~/.ssh/your_key -p 22 deploymentagent@hatch.deployment.com`. The output will be something like that shown below. Note that it will ask for the password for the deploymentagent user.
 
 ``` bash
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
@@ -216,7 +216,7 @@ Now try logging into the machine, with:   "ssh 'deploymentagent@localhost'"
 and check to make sure that only the key(s) you wanted were added.
 ```
 
-3. you should then be able to login with `ssh -p '22' 'deploymentagent@hatch.deployment.com'`.
+3. you should then be able to login with `ssh -i ~/.ssh/your_key deploymentagent@hatch.deployment.com`.
 4. The will look something like (note the change in the command line prompt from bash-5.1# - local - to deploymentagent@xxxxxxxxx:~$ - the server.):
 
 ``` bash
